@@ -1,0 +1,10 @@
+{
+  "name": "front",
+  "dockerComposeFile":[
+    "../docker-compose.yaml",
+    "../.devcontainer/docker-compose.yaml"
+  ],
+  "service":"front",
+  "workspaceFolder": "/workspaces/front",
+  "shutdownAction": "none"
+}

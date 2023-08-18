@@ -1,0 +1,35 @@
+version: "3"
+services:
+  front:
+    build: ./docker/front
+    container_name: intern_front
+    volumes:
+      - ./front:/app
+    ports:
+      - "4000:4000"
+    tty: true
+    command: sh -c "yarn install && yarn dev"
+
+  backend:
+    build: ./docker/backend
+    container_name: intern_backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8080:80"
+    tty: true
+    command: air
+
+  database:
+    build: ./docker/database
+    container_name: intern_database
+    ports:
+      - "33061:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=secret
+
+networks:
+  default:
+    driver: bridge
